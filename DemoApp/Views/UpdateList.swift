@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct UpdateList: View {
-    var body: some View {
-      NavigationView {
-        List(Update.mockData) { update in
+  
+  @StateObject private var viewModel = UpdateStore()
+  
+  var body: some View {
+    NavigationView {
+      List {
+        ForEach(viewModel.updates) { update in
           NavigationLink(destination: UpdateDetail(update: update)) {
             HStack {
               Image(update.image)
@@ -39,14 +43,40 @@ struct UpdateList: View {
             .padding(.vertical, 8)
           }
         }
-        .listStyle(.plain)
-        .navigationTitle("Updates")
+        .onDelete { indexSet in
+          viewModel.updates.remove(at: indexSet.first!)
+        }
+        .onMove { source, destination in
+          viewModel.updates.move(fromOffsets: source, toOffset: destination)
+        }
+      }
+      .listStyle(.plain)
+      .navigationTitle("Updates")
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            addUpdate()
+          } label: {
+            Text("Add Update")
+          }
+        }
+        
+        ToolbarItem(placement: .navigationBarTrailing) {
+          EditButton()
+        }
       }
     }
+  }
+}
+
+extension UpdateList {
+  private func addUpdate() {
+    viewModel.updates.append(Update(image: "Card1", title: "New Item", text: "text", date: "Jan 1"))
+  }
 }
 
 struct UpdateList_Previews: PreviewProvider {
-    static var previews: some View {
-        UpdateList()
-    }
+  static var previews: some View {
+    UpdateList()
+  }
 }

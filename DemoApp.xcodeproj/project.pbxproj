@@ -16,6 +16,9 @@
 		00BB70F528017E1D00B95288 /* UpdateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB70F428017E1D00B95288 /* UpdateList.swift */; };
 		00BB70F728017ED100B95288 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB70F628017ED100B95288 /* Update.swift */; };
 		00BB70F9280180E600B95288 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB70F8280180E600B95288 /* UpdateDetail.swift */; };
+		00FCC5BA28024E09002C77E2 /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC5B928024E09002C77E2 /* UpdateStore.swift */; };
+		00FCC5BD2802516F002C77E2 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC5BC2802516F002C77E2 /* TabBar.swift */; };
+		00FCC5BF2802539C002C77E2 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC5BE2802539C002C77E2 /* RingView.swift */; };
 		00FDDD072800EFBD00050035 /* DemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FDDD062800EFBD00050035 /* DemoAppApp.swift */; };
 		00FDDD092800EFBD00050035 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FDDD082800EFBD00050035 /* ContentView.swift */; };
 		00FDDD0B2800EFC100050035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FDDD0A2800EFC100050035 /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 		00BB70F428017E1D00B95288 /* UpdateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateList.swift; sourceTree = "<group>"; };
 		00BB70F628017ED100B95288 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		00BB70F8280180E600B95288 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
+		00FCC5B928024E09002C77E2 /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
+		00FCC5BC2802516F002C77E2 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		00FCC5BE2802539C002C77E2 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		00FDDD032800EFBD00050035 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FDDD062800EFBD00050035 /* DemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppApp.swift; sourceTree = "<group>"; };
 		00FDDD082800EFBD00050035 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +77,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		00FCC5BB28024F8B002C77E2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				00FCC5B928024E09002C77E2 /* UpdateStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		00FDDCFA2800EFBD00050035 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +109,7 @@
 				00FDDD142800F0BB00050035 /* Extensions */,
 				00BB70F12801695C00B95288 /* Models */,
 				00FDDD0C2800EFC100050035 /* Preview Content */,
+				00FCC5BB28024F8B002C77E2 /* ViewModels */,
 				00FDDD212801137F00050035 /* Views */,
 			);
 			path = DemoApp;
@@ -134,6 +149,7 @@
 				00FDDD1B2800F5C000050035 /* Cards */,
 				00BB70E92801631E00B95288 /* AvatarView.swift */,
 				00BB70EF280167B700B95288 /* SectionView.swift */,
+				00FCC5BE2802539C002C77E2 /* RingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -145,8 +161,9 @@
 				00BB70E72801533E00B95288 /* Home.swift */,
 				00BB70EB2801639E00B95288 /* HomeView.swift */,
 				00FDDD222801139300050035 /* MenuView.swift */,
-				00BB70F428017E1D00B95288 /* UpdateList.swift */,
+				00FCC5BC2802516F002C77E2 /* TabBar.swift */,
 				00BB70F8280180E600B95288 /* UpdateDetail.swift */,
+				00BB70F428017E1D00B95288 /* UpdateList.swift */,
 				00FDDD20280112AB00050035 /* Components */,
 			);
 			path = Views;
@@ -222,8 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00FCC5BF2802539C002C77E2 /* RingView.swift in Sources */,
 				00FDDD092800EFBD00050035 /* ContentView.swift in Sources */,
 				00BB70EE280164CD00B95288 /* UIScreen+Extensions.swift in Sources */,
+				00FCC5BD2802516F002C77E2 /* TabBar.swift in Sources */,
 				00FDDD232801139300050035 /* MenuView.swift in Sources */,
 				00BB70F32801696400B95288 /* Section.swift in Sources */,
 				00BB70F9280180E600B95288 /* UpdateDetail.swift in Sources */,
@@ -232,6 +251,7 @@
 				00BB70EA2801631E00B95288 /* AvatarView.swift in Sources */,
 				00FDDD072800EFBD00050035 /* DemoAppApp.swift in Sources */,
 				00BB70EC2801639E00B95288 /* HomeView.swift in Sources */,
+				00FCC5BA28024E09002C77E2 /* UpdateStore.swift in Sources */,
 				00BB70E82801533E00B95288 /* Home.swift in Sources */,
 				00BB70F728017ED100B95288 /* Update.swift in Sources */,
 				00BB70F0280167B700B95288 /* SectionView.swift in Sources */,
