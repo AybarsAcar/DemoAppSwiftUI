@@ -39,6 +39,8 @@
 		00FCC5EC28026B66002C77E2 /* WorkSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00FCC5DA28026B66002C77E2 /* WorkSans-BoldItalic.ttf */; };
 		00FCC5ED28026B66002C77E2 /* WorkSans-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00FCC5DB28026B66002C77E2 /* WorkSans-BlackItalic.ttf */; };
 		00FCC5EF28026BCC002C77E2 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC5EE28026BCC002C77E2 /* Font+Extensions.swift */; };
+		00FCC5F12802990A002C77E2 /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC5F02802990A002C77E2 /* CourseList.swift */; };
+		00FCC5F328029A75002C77E2 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FCC5F228029A75002C77E2 /* CourseView.swift */; };
 		00FDDD072800EFBD00050035 /* DemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FDDD062800EFBD00050035 /* DemoAppApp.swift */; };
 		00FDDD092800EFBD00050035 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FDDD082800EFBD00050035 /* ContentView.swift */; };
 		00FDDD0B2800EFC100050035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00FDDD0A2800EFC100050035 /* Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		00FCC5DA28026B66002C77E2 /* WorkSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		00FCC5DB28026B66002C77E2 /* WorkSans-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-BlackItalic.ttf"; sourceTree = "<group>"; };
 		00FCC5EE28026BCC002C77E2 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		00FCC5F02802990A002C77E2 /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
+		00FCC5F228029A75002C77E2 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
 		00FDDD032800EFBD00050035 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00FDDD062800EFBD00050035 /* DemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppApp.swift; sourceTree = "<group>"; };
 		00FDDD082800EFBD00050035 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				00BB70E92801631E00B95288 /* AvatarView.swift */,
 				00BB70EF280167B700B95288 /* SectionView.swift */,
 				00FCC5BE2802539C002C77E2 /* RingView.swift */,
+				00FCC5F228029A75002C77E2 /* CourseView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				00FDDD082800EFBD00050035 /* ContentView.swift */,
+				00FCC5F02802990A002C77E2 /* CourseList.swift */,
 				00BB70E72801533E00B95288 /* Home.swift */,
 				00BB70EB2801639E00B95288 /* HomeView.swift */,
 				00FDDD222801139300050035 /* MenuView.swift */,
@@ -355,6 +361,8 @@
 				00FDDD182800F58900050035 /* CardView.swift in Sources */,
 				00FDDD162800F0C400050035 /* Color+Extensions.swift in Sources */,
 				00FDDD1D2800F90E00050035 /* TitleView.swift in Sources */,
+				00FCC5F12802990A002C77E2 /* CourseList.swift in Sources */,
+				00FCC5F328029A75002C77E2 /* CourseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

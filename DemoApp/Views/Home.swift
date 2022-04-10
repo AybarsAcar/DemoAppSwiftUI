@@ -10,6 +10,7 @@ import SwiftUI
 struct Home: View {
   
   @State private var showProfile = false
+  @State private var showContent = false
   @State private var viewState: CGSize = .zero
   
   var body: some View {
@@ -19,9 +20,11 @@ struct Home: View {
       Color.theme.background2
         .ignoresSafeArea()
       
-      HomeView(showProfile: $showProfile)
+      HomeView(showProfile: $showProfile, showContent: $showContent)
         .padding(.top, 44)
-        .background(Color.white)
+        .background(
+          .linearGradient(colors: [.theme.background2, .theme.background1], startPoint: .top, endPoint: .bottom)
+        )
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 20)
         .offset(y: showProfile ? -450 + (viewState.height / 2) : 0)
@@ -53,6 +56,27 @@ struct Home: View {
               }
             }
         )
+      
+      if showContent {
+        ZStack(alignment: .topTrailing) {
+          Color.theme.background1
+            .ignoresSafeArea()
+          ContentView()
+          
+          Image(systemName: "xmark")
+            .frame(width: 36, height: 36)
+            .foregroundColor(.white)
+            .background(.black)
+            .clipShape(Circle())
+            .padding(.horizontal)
+            .onTapGesture {
+              withAnimation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0)) {
+                showContent = false
+              }
+            }
+        }
+        .transition(.move(edge: .bottom))
+      }
     }
   }
 }
