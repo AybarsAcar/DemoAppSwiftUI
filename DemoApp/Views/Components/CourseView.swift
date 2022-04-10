@@ -9,7 +9,9 @@ import SwiftUI
 
 struct CourseView: View {
   
-  @State private var show = false
+  let course: Course
+  @Binding var show: Bool
+  @Binding var active: Bool
   
   var body: some View {
     ZStack(alignment: .top) {
@@ -36,18 +38,18 @@ struct CourseView: View {
         
         HStack(alignment: .top) {
           VStack(alignment: .leading, spacing: 8) {
-            Text("SwiftUI Advanced")
+            Text(course.title)
               .font(.system(size: 24, weight: .bold))
               .foregroundColor(.white)
             
-            Text("20 Sections")
+            Text(course.subtitle)
               .foregroundColor(.white.opacity(0.7))
           }
           
           Spacer()
           
           ZStack {
-            Image("Logo1")
+            Image(uiImage: course.logo)
               .opacity(show ? 0 : 1)
             
             VStack {
@@ -64,7 +66,7 @@ struct CourseView: View {
         
         Spacer()
         
-        Image("Card2")
+        Image(uiImage: course.image)
           .resizable()
           .scaledToFit()
           .frame(maxWidth: .infinity)
@@ -73,21 +75,23 @@ struct CourseView: View {
       .padding(show ? 30 : 20)
       .padding(.top, show ? 30 : 0)
       .frame(maxWidth: show ? .infinity : UIScreen.screenWidth - 60, maxHeight: show ? 460 : 280)
-      .background(Color.theme.eggplant)
+      .background(Color(course.color))
       .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-      .shadow(color: .theme.eggplant.opacity(0.3), radius: 20, x: 0, y: 20)
+      .shadow(color: Color(course.color).opacity(0.3), radius: 20, x: 0, y: 20)
       .onTapGesture {
         withAnimation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0)) {
           show.toggle()
+          active.toggle()
         }
       }
     }
+    .frame(height: show ? UIScreen.screenHeight : 280)
     .ignoresSafeArea()
   }
 }
 
 struct CourseView_Previews: PreviewProvider {
   static var previews: some View {
-    CourseView()
+    CourseView(course: Course.mockData[0], show: .constant(false), active: .constant(false))
   }
 }
