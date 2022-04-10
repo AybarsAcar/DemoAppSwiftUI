@@ -28,6 +28,9 @@ struct AppTheme {
   
   let maroon = Color("maroon")
   let eggplant = Color("eggplant")
+  
+  let darkBlue = Color("dark-blue")
+  let lightBlue = Color("light-blue")
 }
 
 extension Color {

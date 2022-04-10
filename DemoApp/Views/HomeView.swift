@@ -17,12 +17,12 @@ struct HomeView: View {
     VStack {
       HStack {
         Text("Watching")
-          .font(.system(size: 28, weight: .bold))
+          .font(.workSansBold(size: 28))
         
         Spacer()
         
         AvatarView(showProfile: $showProfile)
-         
+        
         Button {
           showUpdate.toggle()
         } label: {
@@ -38,11 +38,17 @@ struct HomeView: View {
         .sheet(isPresented: $showUpdate) {
           UpdateList()
         }
-
+        
       }
       .padding(.horizontal)
       .padding(.leading, 14)
       .padding(.top, 30)
+      
+      ScrollView(.horizontal, showsIndicators: false) {
+        watchRings
+          .padding(.horizontal, 30)
+          .padding(.bottom, 30)
+      }
       
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 20) {
@@ -63,6 +69,46 @@ struct HomeView: View {
       
       Spacer()
       
+    }
+  }
+}
+
+extension HomeView {
+  
+  private var watchRings: some View {
+    HStack(spacing: 30) {
+      HStack(spacing: 12) {
+        RingView(withProgress: 68, showProgress: .constant(true), colors: [.theme.eggplant, .theme.lightBlue])
+        
+        VStack(alignment: .leading, spacing: 4) {
+          Text("6 minutes left")
+            .bold()
+            .withCustomFont(style: .subheadline)
+          
+          Text("Watched 10 mins today")
+            .withCustomFont(style: .caption)
+        }
+      }
+      .padding(8)
+      .background(.white)
+      .cornerRadius(20)
+      .doubleDropShadow
+      
+      HStack(spacing: 12) {
+        RingView(withProgress: 54, showProgress: .constant(true), colors: [.theme.maroon, .red], width: 32, height: 32)
+      }
+      .padding(8)
+      .background(.white)
+      .cornerRadius(20)
+      .doubleDropShadow
+      
+      HStack(spacing: 12) {
+        RingView(withProgress: 32, showProgress: .constant(true), colors: [.theme.lightBlue, .theme.eggplant], width: 32, height: 32)
+      }
+      .padding(8)
+      .background(.white)
+      .cornerRadius(20)
+      .doubleDropShadow
     }
   }
 }

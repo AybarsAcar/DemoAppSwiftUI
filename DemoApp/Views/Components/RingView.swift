@@ -14,14 +14,19 @@ struct RingView: View {
   let width: CGFloat
   let height: CGFloat
   let progress: Double
+  let delay: Double
   
   let multiplier: CGFloat
   
-  init(withProgress progress: Double, colors: [Color], width: CGFloat = 44, height: CGFloat = 44) {
+  @Binding var show: Bool
+  
+  init(withProgress progress: Double, showProgress show: Binding<Bool>, withDelay delay: Double = 0, colors: [Color], width: CGFloat = 44, height: CGFloat = 44) {
     self.colors = colors
     self.width = width
     self.height = height
     self.progress = progress
+    self._show = show
+    self.delay = delay
     
     self.multiplier = width / 44
   }
@@ -33,7 +38,7 @@ struct RingView: View {
         .frame(width: width, height: height)
       
       Circle()
-        .trim(from: 1 - (progress / 100), to: 1)
+        .trim(from: show ? 1 - (progress / 100) : 1, to: 1)
         .stroke(
           .linearGradient(colors: colors, startPoint: .topTrailing, endPoint: .bottomLeading),
           style: StrokeStyle(
@@ -45,6 +50,7 @@ struct RingView: View {
             dashPhase: 0
           )
         )
+        .animation(.easeInOut.delay(self.delay), value: self.show)
         .rotationEffect(.degrees(90))
         .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
         .frame(width: width, height: height)
@@ -59,8 +65,8 @@ struct RingView: View {
 struct RingView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      RingView(withProgress: 82, colors: [.theme.maroon, .theme.eggplant])
-      RingView(withProgress: 54, colors: [.theme.maroon, .theme.eggplant], width: 120, height: 120)
+      RingView(withProgress: 82, showProgress: .constant(true), colors: [.theme.maroon, .theme.eggplant])
+      RingView(withProgress: 54, showProgress: .constant(true), colors: [.theme.maroon, .theme.eggplant], width: 120, height: 120)
     }
     .previewLayout(.sizeThatFits)
     .padding()

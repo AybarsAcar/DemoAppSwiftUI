@@ -82,7 +82,7 @@ struct ContentView: View {
             }
         )
       
-      BottomCardView()
+      BottomCardView(show: $showCard)
         .offset(x: 0, y: showCard ? 360 : 1000)
         .offset(y: bottomState.height)
         .blur(radius: show ? 20 : 0)
