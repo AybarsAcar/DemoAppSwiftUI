@@ -11,6 +11,7 @@ struct CourseList: View {
   
   @State private var courses = Course.mockData
   @State private var active = false
+  @State private var activeIndex = -1
   
   var body: some View {
     ZStack {
@@ -30,8 +31,11 @@ struct CourseList: View {
           
           ForEach(Course.mockData.indices, id: \.self) { index in
             GeometryReader { geo in
-              CourseView(course: courses[index], show: $courses[index].show, active: $active)
+              CourseView(course: courses[index], show: $courses[index].show, active: $active, index: index, activeIndex: $activeIndex)
                 .offset(y: courses[index].show ? -geo.frame(in: .global).minY : 0)
+                .opacity(activeIndex != index && active ? 0 : 1)
+                .scaleEffect(activeIndex != index && active ? 0.5 : 1)
+                .offset(x: activeIndex != index && active ? UIScreen.screenWidth : 0)
             }
             .frame(height: 280)
             .frame(maxWidth: courses[index].show ? .infinity : UIScreen.screenWidth - 60)

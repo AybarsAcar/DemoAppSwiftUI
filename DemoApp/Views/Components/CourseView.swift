@@ -12,6 +12,8 @@ struct CourseView: View {
   let course: Course
   @Binding var show: Bool
   @Binding var active: Bool
+  let index: Int
+  @Binding var activeIndex: Int
   
   var body: some View {
     ZStack(alignment: .top) {
@@ -82,6 +84,13 @@ struct CourseView: View {
         withAnimation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0)) {
           show.toggle()
           active.toggle()
+          
+          if show {
+            activeIndex = index
+          }
+          else {
+            activeIndex = -1
+          }
         }
       }
     }
@@ -92,6 +101,6 @@ struct CourseView: View {
 
 struct CourseView_Previews: PreviewProvider {
   static var previews: some View {
-    CourseView(course: Course.mockData[0], show: .constant(false), active: .constant(false))
+    CourseView(course: Course.mockData[0], show: .constant(false), active: .constant(false), index: 0, activeIndex: .constant(0))
   }
 }
