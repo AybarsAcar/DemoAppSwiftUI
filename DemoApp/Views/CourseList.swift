@@ -12,11 +12,12 @@ struct CourseList: View {
   @State private var courses = Course.mockData
   @State private var active = false
   @State private var activeIndex = -1
+  @State private var activeView: CGSize = .zero
   
   var body: some View {
     ZStack {
       
-      Color.black.opacity(active ? 0.5 : 0)
+      Color.black.opacity(activeView.height / 500)
         .ignoresSafeArea()
       
       ScrollView {
@@ -31,7 +32,7 @@ struct CourseList: View {
           
           ForEach(Course.mockData.indices, id: \.self) { index in
             GeometryReader { geo in
-              CourseView(course: courses[index], show: $courses[index].show, active: $active, index: index, activeIndex: $activeIndex)
+              CourseView(course: courses[index], show: $courses[index].show, active: $active, index: index, activeIndex: $activeIndex, activeView: $activeView)
                 .offset(y: courses[index].show ? -geo.frame(in: .global).minY : 0)
                 .opacity(activeIndex != index && active ? 0 : 1)
                 .scaleEffect(activeIndex != index && active ? 0.5 : 1)
