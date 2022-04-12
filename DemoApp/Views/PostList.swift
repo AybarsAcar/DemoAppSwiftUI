@@ -9,18 +9,21 @@ import SwiftUI
 
 struct PostList: View {
   
-  @State private var posts = [Post]()
+  @ObservedObject private var viewModel = DateStore()
   
   var body: some View {
-    List(posts) { post in
-      Text(post.title)
-    }
-    .onAppear {
-      APIService.shared.getPosts { posts in
-        DispatchQueue.main.async {
-          self.posts = posts
-        }
+    List(viewModel.post) { post in
+      VStack(alignment: .leading, spacing: 8) {
+        Text(post.title)
+          .font(.system(.title, design: .serif).bold())
+        
+        Text(post.body)
+          .font(.subheadline)
+          .foregroundColor(.secondary)
       }
+    }
+    .refreshable {
+      viewModel.getPosts()
     }
   }
 }
