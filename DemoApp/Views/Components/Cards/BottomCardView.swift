@@ -43,7 +43,7 @@ struct BottomCardView: View {
             .lineSpacing(4)
         }
         .padding(20)
-        .background(.white)
+        .background(Color.theme.background3)
         .cornerRadius(20)
         .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 10)
       }

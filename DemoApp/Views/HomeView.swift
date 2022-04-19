@@ -32,7 +32,7 @@ struct HomeView: View {
               .foregroundColor(.primary)
               .font(.system(size: 16, weight: .medium))
               .frame(width: 36, height: 36)
-              .background(Color.white)
+              .background(Color.theme.background3)
               .clipShape(Circle())
               .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
               .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
@@ -81,6 +81,7 @@ struct HomeView: View {
           .padding(.leading, 30)
           .offset(y: -60)
         
+        
         ForEach(Section.mockData) { item in
           SectionView(section: item, width: UIScreen.screenWidth - 60, height: 275)
         }
@@ -110,7 +111,7 @@ extension HomeView {
         }
       }
       .padding(8)
-      .background(.white)
+      .background(Color.theme.background3)
       .cornerRadius(20)
       .doubleDropShadow
       
@@ -118,7 +119,7 @@ extension HomeView {
         RingView(withProgress: 54, showProgress: .constant(true), colors: [.theme.maroon, .red], width: 32, height: 32)
       }
       .padding(8)
-      .background(.white)
+      .background(Color.theme.background3)
       .cornerRadius(20)
       .doubleDropShadow
       
@@ -126,7 +127,7 @@ extension HomeView {
         RingView(withProgress: 32, showProgress: .constant(true), colors: [.theme.lightBlue, .theme.eggplant], width: 32, height: 32)
       }
       .padding(8)
-      .background(.white)
+      .background(Color.theme.background3)
       .cornerRadius(20)
       .doubleDropShadow
     }

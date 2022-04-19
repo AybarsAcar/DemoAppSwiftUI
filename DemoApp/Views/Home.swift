@@ -59,8 +59,9 @@ struct Home: View {
       
       if showContent {
         ZStack(alignment: .topTrailing) {
-          Color.theme.background1
+          BlurView(withStyle: .systemMaterial)
             .ignoresSafeArea()
+          
           ContentView()
           
           Image(systemName: "xmark")
