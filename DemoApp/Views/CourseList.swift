@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CourseList: View {
   
-  @State private var courses = Course.mockData
+  @ObservedObject private var viewModel = CourseStoreViewModel()
+  
   @State private var active = false
   @State private var activeIndex = -1
   @State private var activeView: CGSize = .zero
@@ -30,17 +31,17 @@ struct CourseList: View {
             .padding(.top, 30)
             .blur(radius: active ? 20 : 0)
           
-          ForEach(Course.mockData.indices, id: \.self) { index in
+          ForEach(viewModel.courses.indices, id: \.self) { index in
             GeometryReader { geo in
-              CourseView(course: courses[index], show: $courses[index].show, active: $active, index: index, activeIndex: $activeIndex, activeView: $activeView)
-                .offset(y: courses[index].show ? -geo.frame(in: .global).minY : 0)
+              CourseView(course: viewModel.courses[index], show: $viewModel.courses[index].show, active: $active, index: index, activeIndex: $activeIndex, activeView: $activeView)
+                .offset(y: viewModel.courses[index].show ? -geo.frame(in: .global).minY : 0)
                 .opacity(activeIndex != index && active ? 0 : 1)
                 .scaleEffect(activeIndex != index && active ? 0.5 : 1)
                 .offset(x: activeIndex != index && active ? UIScreen.screenWidth : 0)
             }
             .frame(height: 280)
-            .frame(maxWidth: courses[index].show ? .infinity : UIScreen.screenWidth - 60)
-            .zIndex(courses[index].show ? 1 : 0)
+            .frame(maxWidth: viewModel.courses[index].show ? .infinity : UIScreen.screenWidth - 60)
+            .zIndex(viewModel.courses[index].show ? 1 : 0)
           }
         }
         .frame(width: UIScreen.screenWidth)

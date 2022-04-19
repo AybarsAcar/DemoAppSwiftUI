@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  DemoApp
+//
+//  Created by Aybars Acar on 19/4/2022.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+SPACE_ID = wyd1ya8q1slz
+ACCESS_TOKEN = O9RwnxJ6z0ivuBCAVBJXOVu7UQyKnw4qt-k_KHtvQUQ
