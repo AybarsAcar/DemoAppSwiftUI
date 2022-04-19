@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CourseDetail: View {
   
@@ -47,7 +48,7 @@ struct CourseDetail: View {
           
           Spacer()
           
-          Image(uiImage: course.image)
+          WebImage(url: course.image)
             .resizable()
             .scaledToFit()
             .frame(maxWidth: .infinity)
