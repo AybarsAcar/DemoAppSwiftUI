@@ -59,6 +59,7 @@ struct CircleButton: View {
           }
         }
         .onEnded { value in
+          HapticsManager.shared.impact(withStyle: .soft)
           withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0)) {
             longPressed.toggle()
           }

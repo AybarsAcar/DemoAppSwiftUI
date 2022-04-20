@@ -63,6 +63,8 @@ struct NeumorphicButtons: View {
                 tapped = true
               }
               
+              HapticsManager.shared.vibrate(for: .success)
+              
               DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0)) {
                   tapped = false
