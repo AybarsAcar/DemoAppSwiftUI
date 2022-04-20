@@ -46,13 +46,13 @@ struct CircleButton: View {
     .shadow(color: Color(#colorLiteral(red: 0.7294117647, green: 0.7843137255, blue: 0.8941176471, alpha: 1)), radius: 20, x: 20, y: 20)
     .scaleEffect(tapped ? 1.2 : 1)
     .gesture(
-      LongPressGesture()
+      LongPressGesture(minimumDuration: 0.3)
         .onChanged { value in
           withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0)) {
             tapped = true
           }
           
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0)) {
               tapped = false
             }

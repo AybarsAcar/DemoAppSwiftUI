@@ -31,6 +31,8 @@ struct AppTheme {
   
   let darkBlue = Color("dark-blue")
   let lightBlue = Color("light-blue")
+  
+  let loginBackground = Color("login-background")
 }
 
 extension Color {

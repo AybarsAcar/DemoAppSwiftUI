@@ -27,6 +27,7 @@
 		00C2CE4B2810015F00552910 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2CE4A2810015F00552910 /* CircleButton.swift */; };
 		00C2CE4D28100CAB00552910 /* PayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2CE4C28100CAB00552910 /* PayButton.swift */; };
 		00C2CE502810115900552910 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2CE4F2810115900552910 /* HapticsManager.swift */; };
+		00C2CE52281015E800552910 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2CE51281015E800552910 /* LoginView.swift */; };
 		00D7DAB5280EAF5D00DA51E6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00D7DAB4280EAF5D00DA51E6 /* SDWebImageSwiftUI */; };
 		00D7DAB7280EB3B700DA51E6 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7DAB6280EB3B700DA51E6 /* BlurView.swift */; };
 		00D7DABC280EBE8A00DA51E6 /* NeumorphicButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7DABB280EBE8A00DA51E6 /* NeumorphicButtons.swift */; };
@@ -87,6 +88,7 @@
 		00C2CE4A2810015F00552910 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		00C2CE4C28100CAB00552910 /* PayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayButton.swift; sourceTree = "<group>"; };
 		00C2CE4F2810115900552910 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		00C2CE51281015E800552910 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		00D7DAB2280EAE9700DA51E6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		00D7DAB6280EB3B700DA51E6 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		00D7DABB280EBE8A00DA51E6 /* NeumorphicButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtons.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				00FCC5F02802990A002C77E2 /* CourseList.swift */,
 				00BB70E72801533E00B95288 /* Home.swift */,
 				00BB70EB2801639E00B95288 /* HomeView.swift */,
+				00C2CE51281015E800552910 /* LoginView.swift */,
 				00FDDD222801139300050035 /* MenuView.swift */,
 				00119AEA2804403C00C2DE74 /* PostList.swift */,
 				00FCC5BC2802516F002C77E2 /* TabBar.swift */,
@@ -426,6 +429,7 @@
 				002F68EE2805878600EC3128 /* CourseStore.swift in Sources */,
 				00D7DABC280EBE8A00DA51E6 /* NeumorphicButtons.swift in Sources */,
 				00BB70EA2801631E00B95288 /* AvatarView.swift in Sources */,
+				00C2CE52281015E800552910 /* LoginView.swift in Sources */,
 				00FCC5EF28026BCC002C77E2 /* Font+Extensions.swift in Sources */,
 				00FDDD072800EFBD00050035 /* DemoAppApp.swift in Sources */,
 				00BB70EC2801639E00B95288 /* HomeView.swift in Sources */,
