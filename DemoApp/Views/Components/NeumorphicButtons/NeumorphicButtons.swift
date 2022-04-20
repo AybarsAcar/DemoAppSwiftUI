@@ -20,7 +20,7 @@ struct NeumorphicButtons: View {
         .background(
           ZStack {
             Color(longPressed ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
-
+            
             
             // for the inner shadow
             RoundedRectangle(cornerRadius: 16, style: .continuous)

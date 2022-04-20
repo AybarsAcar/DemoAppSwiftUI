@@ -24,6 +24,8 @@
 		00BB70F528017E1D00B95288 /* UpdateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB70F428017E1D00B95288 /* UpdateList.swift */; };
 		00BB70F728017ED100B95288 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB70F628017ED100B95288 /* Update.swift */; };
 		00BB70F9280180E600B95288 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB70F8280180E600B95288 /* UpdateDetail.swift */; };
+		00C2CE4B2810015F00552910 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2CE4A2810015F00552910 /* CircleButton.swift */; };
+		00C2CE4D28100CAB00552910 /* PayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2CE4C28100CAB00552910 /* PayButton.swift */; };
 		00D7DAB5280EAF5D00DA51E6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00D7DAB4280EAF5D00DA51E6 /* SDWebImageSwiftUI */; };
 		00D7DAB7280EB3B700DA51E6 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7DAB6280EB3B700DA51E6 /* BlurView.swift */; };
 		00D7DABC280EBE8A00DA51E6 /* NeumorphicButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7DABB280EBE8A00DA51E6 /* NeumorphicButtons.swift */; };
@@ -81,6 +83,8 @@
 		00BB70F428017E1D00B95288 /* UpdateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateList.swift; sourceTree = "<group>"; };
 		00BB70F628017ED100B95288 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		00BB70F8280180E600B95288 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
+		00C2CE4A2810015F00552910 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		00C2CE4C28100CAB00552910 /* PayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayButton.swift; sourceTree = "<group>"; };
 		00D7DAB2280EAE9700DA51E6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		00D7DAB6280EB3B700DA51E6 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		00D7DABB280EBE8A00DA51E6 /* NeumorphicButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicButtons.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				00D7DABB280EBE8A00DA51E6 /* NeumorphicButtons.swift */,
+				00C2CE4A2810015F00552910 /* CircleButton.swift */,
+				00C2CE4C28100CAB00552910 /* PayButton.swift */,
 			);
 			path = NeumorphicButtons;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00FCC5BF2802539C002C77E2 /* RingView.swift in Sources */,
+				00C2CE4D28100CAB00552910 /* PayButton.swift in Sources */,
 				00FDDD092800EFBD00050035 /* ContentView.swift in Sources */,
 				00BB70EE280164CD00B95288 /* UIScreen+Extensions.swift in Sources */,
 				00FCC5BD2802516F002C77E2 /* TabBar.swift in Sources */,
@@ -415,6 +422,7 @@
 				00FCC5BA28024E09002C77E2 /* UpdateStore.swift in Sources */,
 				00BB70E82801533E00B95288 /* Home.swift in Sources */,
 				00BB70F728017ED100B95288 /* Update.swift in Sources */,
+				00C2CE4B2810015F00552910 /* CircleButton.swift in Sources */,
 				00BB70F0280167B700B95288 /* SectionView.swift in Sources */,
 				00FCC5C12802635C002C77E2 /* Modifiers.swift in Sources */,
 				00FDDD1A2800F5B400050035 /* BackcardView.swift in Sources */,
