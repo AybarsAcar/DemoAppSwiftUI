@@ -18,6 +18,18 @@ struct LoginView: View {
   @State private var email = ""
   @State private var password = ""
   
+  // form focus field
+  private enum Field: Hashable {
+    case email, password
+  }
+  @FocusState private var focusedField: Field?
+  
+  @State private var showAlert = false
+  @State private var alertMessage = ""
+  
+  @State private var isLoading = false
+  
+  
   var body: some View {
     ZStack(alignment: .top) {
       Color.black
@@ -27,16 +39,31 @@ struct LoginView: View {
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .edgesIgnoringSafeArea(.bottom)
       
-      heroSection
+      Group {
+        heroSection
+        
+        formSection
+        
+      }
+      .offset(y: focusedField != nil ? -100 : 0)
+      .animation(.easeInOut, value: focusedField)
       
-      formSection
+      buttonSection
+      
+      if isLoading {
+        LoadingView()
+      }
+
+    }
+    .onTapGesture {
+      UIApplication.shared.endEditing()
     }
   }
 }
 
 // MARK: - Components
 extension LoginView {
-
+  
   private var heroSection: some View {
     VStack {
       GeometryReader { geo in
@@ -54,7 +81,7 @@ extension LoginView {
         .frame(width: 250)
         .multilineTextAlignment(.center)
         .offset(x: viewState.width / 20, y: viewState.height / 20)
-
+      
       Spacer()
     }
     .padding(.top, 100)
@@ -76,7 +103,7 @@ extension LoginView {
           .rotationEffect(.degrees(show ? 360 : 0), anchor: .leading)
           .blendMode(.overlay)
           .animation(.linear(duration: 100).repeatForever(autoreverses: false), value: show)
-
+        
       }
     )
     .background(
@@ -117,6 +144,7 @@ extension LoginView {
           .font(.subheadline)
           .padding(.leading)
           .frame(height: 44)
+          .focused($focusedField, equals: .email)
       }
       .padding(.leading)
       
@@ -135,6 +163,8 @@ extension LoginView {
           .font(.subheadline)
           .padding(.leading)
           .frame(height: 44)
+          .focused($focusedField, equals: .password)
+        
       }
       .padding(.leading)
     }
@@ -145,6 +175,51 @@ extension LoginView {
     .shadow(color: .black.opacity(0.4), radius: 20, x: 0, y: 20)
     .padding(.horizontal)
     .offset(y: 460)
+  }
+  
+  private var buttonSection: some View {
+    HStack {
+      
+      Text("Forgot Password?")
+        .font(.subheadline)
+      
+      Spacer()
+      
+      Button {
+        if email.isEmpty {
+          focusedField = .email
+        }
+        else if password.isEmpty {
+          focusedField = .password
+        }
+        else {
+          focusedField = nil
+          print("handle login")
+          isLoading = true
+          
+          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            isLoading = false
+            showAlert = true
+            alertMessage = "Alert"
+          }
+        }
+        
+      } label: {
+        Text("Log in")
+          .foregroundColor(.black)
+          .padding(12)
+          .padding(.horizontal, 30)
+          .background(Color.theme.card2)
+          .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+          .shadow(color: .theme.card2.opacity(0.3), radius: 20, x: 0, y: 20)
+          .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+          }
+      }
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+    .padding(40)
+    
   }
 }
 
