@@ -262,6 +262,7 @@ extension LoginView {
 
         success = true
         userStore.isLoggedIn = true
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
           success = false

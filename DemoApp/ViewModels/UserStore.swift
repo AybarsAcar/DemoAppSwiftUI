@@ -8,6 +8,10 @@
 import Foundation
 
 final class UserStore: ObservableObject {
-  @Published var isLoggedIn = false
+  @Published var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "isLoggedIn") {
+    didSet {
+      UserDefaults.standard.set(self.isLoggedIn, forKey: "isLoggedIn")
+    }
+  }
   @Published var showLogin = false
 }
