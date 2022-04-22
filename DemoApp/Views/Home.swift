@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Home: View {
   
+  @EnvironmentObject private var userStore: UserStore
+  
   @State private var showProfile = false
   @State private var showContent = false
   @State private var viewState: CGSize = .zero
@@ -57,6 +59,10 @@ struct Home: View {
             }
         )
       
+      if userStore.showLogin {
+        LoginView()
+      }
+      
       if showContent {
         ZStack(alignment: .topTrailing) {
           BlurView(withStyle: .systemMaterial)
@@ -85,5 +91,6 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
   static var previews: some View {
     Home()
+      .environmentObject(UserStore())
   }
 }

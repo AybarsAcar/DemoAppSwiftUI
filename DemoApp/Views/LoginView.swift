@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
+  
+  @Environment(\.dismiss) private var dismiss
+  @EnvironmentObject private var userStore: UserStore
   
   // hero animation states
   @State private var show = false
@@ -49,6 +53,22 @@ struct LoginView: View {
       .offset(y: focusedField != nil ? -100 : 0)
       .animation(.easeInOut, value: focusedField)
       
+      HStack {
+        Spacer()
+        
+        Image(systemName: "xmark")
+          .font(.subheadline)
+          .foregroundColor(.white)
+          .padding()
+          .background(.black)
+          .clipShape(Circle())
+          .onTapGesture {
+            userStore.showLogin = false
+            dismiss()
+          }
+      }
+      .padding()
+      
       buttonSection
       
       if isLoading {
@@ -73,15 +93,16 @@ extension LoginView {
   
   private var heroSection: some View {
     VStack {
-      GeometryReader { geo in
-        Text("Learn design & code.\nFrom scratch.")
-          .font(.system(size: geo.size.width / 10, weight: .bold))
-          .foregroundColor(.white)
-          .multilineTextAlignment(.center)
-      }
-      .frame(maxWidth: 375, maxHeight: 100)
-      .padding(.horizontal, 16)
-      .offset(x: viewState.width / 15, y: viewState.height / 15)
+      
+      Text("Learn design & code.\nFrom scratch.")
+        .font(.largeTitle)
+        .fontWeight(.semibold)
+        .minimumScaleFactor(0.6)
+        .foregroundColor(.white)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: 375, maxHeight: 100)
+        .padding(.horizontal, 16)
+        .offset(x: viewState.width / 15, y: viewState.height / 15)
       
       Text("80 hours of courses for SwiftUI, React, and design tools")
         .font(.subheadline)
@@ -228,13 +249,25 @@ extension LoginView {
       print("handle login")
       isLoading = true
       
-      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+      // login
+      Auth.auth().signIn(withEmail: email, password: password) { result, error in
+        
         isLoading = false
+
+        guard let result = result, error == nil else {
+          alertMessage = error?.localizedDescription ?? ""
+          showAlert = true
+          return
+        }
+
         success = true
+        userStore.isLoggedIn = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
           success = false
+          userStore.showLogin = false
         }
+        
       }
     }
   }
@@ -243,5 +276,6 @@ extension LoginView {
 struct LoginView_Previews: PreviewProvider {
   static var previews: some View {
     LoginView()
+      .environmentObject(UserStore())
   }
 }
