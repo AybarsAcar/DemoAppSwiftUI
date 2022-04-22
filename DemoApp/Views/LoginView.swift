@@ -29,6 +29,7 @@ struct LoginView: View {
   
   @State private var isLoading = false
   
+  @State private var success = false
   
   var body: some View {
     ZStack(alignment: .top) {
@@ -52,6 +53,12 @@ struct LoginView: View {
       
       if isLoading {
         LoadingView()
+          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+      }
+      
+      if success {
+        SuccessView()
+          .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
       }
 
     }
@@ -186,24 +193,7 @@ extension LoginView {
       Spacer()
       
       Button {
-        if email.isEmpty {
-          focusedField = .email
-        }
-        else if password.isEmpty {
-          focusedField = .password
-        }
-        else {
-          focusedField = nil
-          print("handle login")
-          isLoading = true
-          
-          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            isLoading = false
-            showAlert = true
-            alertMessage = "Alert"
-          }
-        }
-        
+        handleLogin()
       } label: {
         Text("Log in")
           .foregroundColor(.black)
@@ -220,6 +210,33 @@ extension LoginView {
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
     .padding(40)
     
+  }
+}
+
+// MARK: - Member Methods
+extension LoginView {
+  
+  private func handleLogin() {
+    if email.isEmpty {
+      focusedField = .email
+    }
+    else if password.isEmpty {
+      focusedField = .password
+    }
+    else {
+      focusedField = nil
+      print("handle login")
+      isLoading = true
+      
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        isLoading = false
+        success = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+          success = false
+        }
+      }
+    }
   }
 }
 
