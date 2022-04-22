@@ -26,7 +26,8 @@ struct ContentView: View {
         .animation(.default.delay(0.1), value: showCard)
       
       BackcardView()
-        .frame(width: showCard ? 300 : 340, height: 220)
+        .frame(maxWidth: showCard ? 300 : 340)
+        .frame(height: 220)
         .background(show ? Color.theme.card3 : Color.theme.card4)
         .cornerRadius(20)
         .shadow(radius: 20)
@@ -41,7 +42,8 @@ struct ContentView: View {
         .animation(.easeInOut(duration: 0.5), value: show)
       
       BackcardView()
-        .frame(width: 340, height: 220)
+        .frame(maxWidth: 340)
+        .frame(height: 220)
         .background(show ? Color.theme.card4 : Color.theme.card3)
         .cornerRadius(20)
         .shadow(radius: 20)
@@ -55,7 +57,8 @@ struct ContentView: View {
         .blendMode(.hardLight)
       
       CardView()
-        .frame(width: showCard ? 375 : 340, height: 220)
+        .frame(maxWidth: showCard ? 375 : 340)
+        .frame(height: 220)
         .background(Color.black)
         .clipShape(RoundedRectangle(cornerRadius: showCard ? 30 : 20, style: .continuous))
         .shadow(radius: 20)
@@ -82,41 +85,43 @@ struct ContentView: View {
             }
         )
       
-      BottomCardView(show: $showCard)
-        .offset(x: 0, y: showCard ? 360 : 1000)
-        .offset(y: bottomState.height)
-        .blur(radius: show ? 20 : 0)
-        .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8), value: showCard)
-        .gesture(
-          DragGesture()
-            .onChanged { value in
-              bottomState = value.translation
-              if showFull {
-                bottomState.height += -300
-              }
-              
-              if bottomState.height < -300 {
-                bottomState.height = -300
-              }
-            }
-            .onEnded { value in
-              withAnimation {
-                if bottomState.height > 50 {
-                  showCard = false
+      GeometryReader { geo in
+        BottomCardView(show: $showCard)
+          .offset(x: 0, y: showCard ? geo.size.height / 2 : geo.size.height)
+          .offset(y: bottomState.height + geo.safeAreaInsets.top + geo.safeAreaInsets.bottom)
+          .blur(radius: show ? 20 : 0)
+          .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8), value: showCard)
+          .gesture(
+            DragGesture()
+              .onChanged { value in
+                bottomState = value.translation
+                if showFull {
+                  bottomState.height += -300
                 }
                 
-                if (bottomState.height < -100 && !showFull) || (bottomState.height < -250 && showFull) {
+                if bottomState.height < -300 {
                   bottomState.height = -300
-                  showFull = true
-                }
-                
-                else {
-                  bottomState = .zero
-                  showFull = false
                 }
               }
-            }
-        )
+              .onEnded { value in
+                withAnimation {
+                  if bottomState.height > 50 {
+                    showCard = false
+                  }
+                  
+                  if (bottomState.height < -100 && !showFull) || (bottomState.height < -250 && showFull) {
+                    bottomState.height = -300
+                    showFull = true
+                  }
+                  
+                  else {
+                    bottomState = .zero
+                    showFull = false
+                  }
+                }
+              }
+          )
+      }
       
     }
   }

@@ -16,7 +16,7 @@ struct Home: View {
   @State private var viewState: CGSize = .zero
   
   var body: some View {
-  
+    
     ZStack {
       
       Color.theme.background2
